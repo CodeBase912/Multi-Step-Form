@@ -2,6 +2,7 @@
   margin: 0;
   box-sizing: border-box;
   --max-width: 1200px;
+  --progress-complete: #31e449;
 }
 
 body {
@@ -33,17 +34,55 @@ header {
   padding: 10px 10px 20px 10px;
 }
 
-.header__logo-icon {
+.logo__icon {
   width: 50px;
   object-fit: contain;
   margin-right: 10px;
 }
 
-.header_logo-text {
+.logo__text {
   color: white;
   font-size: 25px;
 }
 
 main {
   height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  fill: white;
+}
+
+.progress__container {
+  display: flex;
+  align-items: center;
+}
+
+.progress__icon {
+  width: 30px;
+  height: 30px;
+  z-index: 10;
+  border-radius: 100%;
+  border: 2px solid #a859b4;
+}
+
+.progress_bar {
+  width: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.translate__left {
+  transform: translateX(-2%);
+}
+
+.progress__step {
+  display: flex;
+  align-items: center;
+}
+
+.progress__active {
+  fill: var(--progress-complete);
 }

@@ -39,7 +39,7 @@ const prevTransition = (prevBtns, currentStepIndex) => {
   prevBtns[currentStepIndex - 1].style.pointerEvents = "all";
 
   // Animate the current step out of view
-  prevBtns[currentStepIndex].style.transform = "translateX(-500px)";
+  prevBtns[currentStepIndex].style.transform = "translateX(500px)";
   prevBtns[currentStepIndex].style.opacity = "0";
   prevBtns[currentStepIndex].style.pointerEvents = "none";
 };
@@ -50,15 +50,26 @@ const all_prev_btns = document.querySelectorAll('[data-action="step-prev"]');
 
 console.log("all_next_btns: ", all_next_btns);
 for (let i = 0; i < all_next_btns.length; i++) {
-  console.log("curentIteration: ", all_next_btns[i]);
+  //   console.log("curentIteration: ", all_next_btns[i]);
   all_next_btns[i].addEventListener("click", (e) => {
     e.preventDefault();
     const currentStep = parseInt(e.target.getAttribute("data-current-step"));
-    console.log("currentStep: ", currentStep);
+    // console.log("currentStep: ", currentStep);
 
     if (e.target.getAttribute("type") !== "submit") {
       const currentStepIndex = currentStep - 1;
       nextTransition(form_steps_containers, currentStepIndex);
+    }
+  });
+
+  all_prev_btns[i].addEventListener("click", (e) => {
+    e.preventDefault();
+    const currentStep = parseInt(e.target.getAttribute("data-current-step"));
+    // console.log("currentStep: ", currentStep);
+
+    if (e.target.getAttribute("type") !== "submit") {
+      const currentStepIndex = currentStep - 1;
+      prevTransition(form_steps_containers, currentStepIndex);
     }
   });
 }

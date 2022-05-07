@@ -106,5 +106,6 @@ submit_btn.addEventListener("click", (e) => {
 
   // ....
   // Handle form submission here
-  console.log("formData: ", form_data);
+  console.log("form_data: ", form_data);
+  alert(`form_data: \n${JSON.stringify(form_data)}`);
 });

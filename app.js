@@ -1,10 +1,7 @@
 const step_1_form = document.querySelector('[data-step="1"]');
 const form_steps_containers = document.querySelectorAll("[data-step]");
 const progress_bar_icons = document.querySelectorAll("[data-step-icon]");
-console.log("step_1_form: ", step_1_form);
-console.log("form_steps_containers: ", form_steps_containers);
-console.log("progress_bar_icons: ", progress_bar_icons);
-console.log("Step: ", step_1_form.getAttribute("data-step"));
+const submit_btn = document.querySelector("#msf-btn-submit");
 
 // Utitlity funcitons
 
@@ -50,16 +47,17 @@ const prevTransition = (prevBtns, currentStepIndex) => {
 const all_next_btns = document.querySelectorAll('[data-action="step-next"]');
 const all_prev_btns = document.querySelectorAll('[data-action="step-prev"]');
 
-console.log("all_next_btns: ", all_next_btns);
+// Add click event listeners to form buttons
 for (let i = 0; i < all_next_btns.length; i++) {
   //   console.log("curentIteration: ", all_next_btns[i]);
   all_next_btns[i].addEventListener("click", (e) => {
     e.preventDefault();
+
+    // Determine current active form step
     const currentStep = parseInt(e.target.getAttribute("data-current-step"));
-    // console.log("currentStep: ", currentStep);
     const currentStepIndex = currentStep - 1;
 
-    // Update progress bar icons state
+    // Update progress bar state
     if (
       progress_bar_icons[currentStepIndex].style.fill ===
       "var(--progress-complete-color)"
@@ -76,6 +74,7 @@ for (let i = 0; i < all_next_btns.length; i++) {
       progress_bar_icons[currentStepIndex + 1].style.fill = "white";
     }
 
+    // Trigger transition to next step
     if (e.target.getAttribute("type") !== "submit") {
       nextTransition(form_steps_containers, currentStepIndex);
     }
@@ -83,12 +82,29 @@ for (let i = 0; i < all_next_btns.length; i++) {
 
   all_prev_btns[i].addEventListener("click", (e) => {
     e.preventDefault();
-    const currentStep = parseInt(e.target.getAttribute("data-current-step"));
-    // console.log("currentStep: ", currentStep);
 
+    // Determine current active form step
+    const currentStep = parseInt(e.target.getAttribute("data-current-step"));
+    const currentStepIndex = currentStep - 1;
+
+    // Trigger transition to previous step
     if (e.target.getAttribute("type") !== "submit") {
-      const currentStepIndex = currentStep - 1;
       prevTransition(form_steps_containers, currentStepIndex);
     }
   });
 }
+
+submit_btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  let form_data = {};
+
+  // Get all form input values
+  const form_inputs = document.querySelectorAll(".form__input");
+  for (let i = 0; i < form_inputs.length; i++) {
+    form_data[form_inputs[i].getAttribute("name")] = form_inputs[i].value;
+  }
+
+  // ....
+  // Handle form submission here
+  console.log("formData: ", form_data);
+});

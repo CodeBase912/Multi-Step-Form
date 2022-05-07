@@ -9,8 +9,10 @@
   --step-form-title-color: #ffffff;
   --input-text-color: #ebebeb;
   --input-bg-color: rgba(0, 0, 0, 0.58);
-  --btn-bg-primary-color: #63008d;
   --btn-text-primary-color: #d1d1d1;
+  --btn-bg-primary-color: #2b003d;
+  --btn-bg-secondary-color: #63008d;
+  --btn-text-secondary-color: #d1d1d1;
 }
 
 body {
@@ -179,6 +181,7 @@ h3 {
   width: 45%;
   cursor: pointer;
   margin: 10px 0;
+  font-weight: 700;
 }
 
 .form__btn:active {
@@ -186,6 +189,25 @@ h3 {
 }
 
 .form__btn:hover {
+  opacity: 0.98;
+}
+
+.form__btn-secondary {
+  color: var(--btn-text-secondary-color);
+  background-color: var(--btn-bg-secondary-color);
+  border: none;
+  padding: 10px 0;
+  width: 45%;
+  cursor: pointer;
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+.form__btn-secondary:active {
+  opacity: 0.8 !important;
+}
+
+.form__btn-secondary:hover {
   opacity: 0.98;
 }
 

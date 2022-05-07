@@ -1,7 +1,9 @@
 const step_1_form = document.querySelector('[data-step="1"]');
 const form_steps_containers = document.querySelectorAll("[data-step]");
+const progress_bar_icons = document.querySelectorAll("[data-step-icon]");
 console.log("step_1_form: ", step_1_form);
 console.log("form_steps_containers: ", form_steps_containers);
+console.log("progress_bar_icons: ", progress_bar_icons);
 console.log("Step: ", step_1_form.getAttribute("data-step"));
 
 // Utitlity funcitons
@@ -55,9 +57,26 @@ for (let i = 0; i < all_next_btns.length; i++) {
     e.preventDefault();
     const currentStep = parseInt(e.target.getAttribute("data-current-step"));
     // console.log("currentStep: ", currentStep);
+    const currentStepIndex = currentStep - 1;
+
+    // Update progress bar icons state
+    if (
+      progress_bar_icons[currentStepIndex].style.fill ===
+      "var(--progress-complete-color)"
+    ) {
+    } else {
+      progress_bar_icons[currentStepIndex].style.fill =
+        "var(--progress-complete-color)";
+    }
+    if (
+      progress_bar_icons[currentStepIndex + 1].style.fill ===
+      "var(--progress-complete-color)"
+    ) {
+    } else {
+      progress_bar_icons[currentStepIndex + 1].style.fill = "white";
+    }
 
     if (e.target.getAttribute("type") !== "submit") {
-      const currentStepIndex = currentStep - 1;
       nextTransition(form_steps_containers, currentStepIndex);
     }
   });

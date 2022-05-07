@@ -3,6 +3,7 @@
   box-sizing: border-box;
   --max-width: 1200px;
   --progress-complete-color: #31e449;
+  --progress-current-color: #aaaaaa;
   --container-bg-color: #bc82b7;
   --step-text-color: #414141;
   --step-form-title-color: #ffffff;
@@ -60,7 +61,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  fill: white;
+  fill: var(--progress-current-color);
 }
 
 /* Progress Bar Styles */
@@ -94,7 +95,8 @@ main {
 }
 
 .progress__active {
-  fill: var(--progress-complete-color);
+  /* fill: var(--progress-complete-color); */
+  fill: white;
 }
 
 /* Form Styles */

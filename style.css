@@ -24,8 +24,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: max-content;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 header {
@@ -100,12 +99,14 @@ main {
 
 /* Form Styles */
 form {
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 form > p,
@@ -119,6 +120,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  min-width: fit-content;
   max-width: 400px;
   padding: 20px;
   margin: 30px auto;
@@ -185,12 +187,68 @@ h3 {
   opacity: 0.98;
 }
 
-[data-step-active="false"] {
+[data-default-step] {
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+[data-step] {
+  position: absolute;
+  transform: translateX(500px);
   opacity: 0;
   pointer-events: none;
+  transition: all 0.5s ease-in-out;
+  /* animation: 0.8s next_btn_in ease-in-out forwards; */
+  /* animation-play-state: paused; */
+  /* animation-name: next_btn_in; */
+  /* animation-duration: 0.8s; or: Xms */
+  /* animation-timing-function: ease-in-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+  /* animation-fill-mode: forwards; /* or: backwards, both, none */
+}
+
+@keyframes next_btn_out {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(500px);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes next_btn_in {
+  0% {
+    transform: translateX(500px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 [data-step-active="true"] {
+  transform: translateX(0px);
   opacity: 1;
   pointer-events: all;
 }
+
+/* Animation */
+/* [data-step="2"] {
+
+} */

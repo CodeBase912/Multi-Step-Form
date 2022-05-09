@@ -120,13 +120,14 @@
               <label class="form__input-label" labelFor="email">Email</label>
               <input
                 id="email"
-                class="form__input form__input-error-mode"
+                class="form__input"
                 type="email"
                 name="email"
                 placeholder="Email"
                 data-error-message=""
+                required
               />
-              <p class="form__input-error">Please enter a valid email</p>
+              <p class="form__input-error"></p>
             </div>
             <div class="form__input-group">
               <label class="form__input-label" labelFor="password">
@@ -138,7 +139,7 @@
                 type="password"
                 name="password"
                 placeholder="Password"
-                pattern="/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/"
+                required
               />
               <p class="form__input-error"></p>
             </div>
@@ -152,6 +153,7 @@
                 type="password"
                 name="confirmed_password"
                 placeholder="Confirm Password"
+                required
               />
               <p class="form__input-error"></p>
             </div>

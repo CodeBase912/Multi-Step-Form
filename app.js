@@ -14,22 +14,29 @@ multi_step_form.addEventListener("click", (e) => {
     const currentStep = e.target.dataset.currentStep;
     if (e.target.dataset.action === "next") {
       // Validate current step input fields
-      const step_inputs_elements =
-        form_step_cards[currentStep - 1].querySelectorAll(".form__input");
-      const isInputError = [...step_inputs_elements].find(
-        (input_element, input_element_index) => {
+      const step_inputs_groups =
+        form_step_cards[currentStep - 1].querySelectorAll(".form__input-group");
+      const isInputError = [...step_inputs_groups].filter(
+        (input_group, input_group_index) => {
+          const input_element = input_group.querySelector(".form__input");
+          const input__error_element =
+            input_group.querySelector(".form__input-error");
           console.log("Valid: ", input_element.checkValidity());
           if (!input_element.checkValidity()) {
             console.log(
               `${input_element.getAttribute("name")} validation error: `,
               input_element.validationMessage
             );
+            input__error_element.innerHTML = input_element.validationMessage;
+            input_element.classList.add("form__input-error-mode");
             return true;
           }
+          input__error_element.innerHTML = "";
+          input_element.classList.remove("form__input-error-mode");
         }
       );
 
-      if (isInputError) return;
+      if (isInputError.length > 0) return;
 
       // Show next form step
       // Start by hiding current form step

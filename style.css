@@ -8,7 +8,7 @@
   --step-text-color: #414141;
   --step-form-title-color: #ffffff;
   --input-text-color: #ebebeb;
-  --input-error-text-color: rgb(189, 5, 5);
+  --input-error-text-color: rgb(146, 0, 0);
   --input-bg-color: rgba(0, 0, 0, 0.58);
   --btn-text-primary-color: #d1d1d1;
   --btn-bg-primary-color: #2b003d;
@@ -157,7 +157,7 @@ h3 {
 }
 
 .form__input-error-mode {
-  border: 1px solid var(--input-error-text-color);
+  border: 2px solid var(--input-error-text-color);
 }
 
 .form__input-group {

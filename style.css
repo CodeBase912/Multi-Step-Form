@@ -227,7 +227,7 @@ h3 {
 }
 
 /* Prevents animation being visible on page load */
-.form_default-step {
+.form__default-step {
   animation-duration: 0s !important;
 }
 

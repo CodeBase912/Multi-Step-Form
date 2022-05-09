@@ -63,8 +63,8 @@ main {
   height: calc(100vh - 77.16px);
   margin: 0 auto;
   max-width: var(--max-width);
-  fill: var(--progress-current-color);
   padding: 0 10px;
+  fill: white;
 }
 
 /* Progress Bar Styles */
@@ -99,9 +99,16 @@ main {
   align-items: center;
 }
 
-.progress__active {
-  /* fill: var(--progress-complete-color); */
+.progress__step-active > .progress__icon {
   fill: white;
+}
+
+.progress__step-inactive {
+  fill: var(--progress-current-color);
+}
+
+.progress__step-complete {
+  fill: var(--progress-complete-color);
 }
 
 /* Form Styles */
@@ -112,6 +119,8 @@ form {
   overflow-x: hidden;
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 form > p,
@@ -212,7 +221,7 @@ h3 {
   max-width: fit-content;
   pointer-events: none;
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
 }

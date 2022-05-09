@@ -218,21 +218,26 @@ h3 {
 }
 
 .form__active-step {
-  opacity: 1;
-  padding: 30px;
-  margin: 30px auto;
-  pointer-events: all;
   animation: slide_in 0.5s ease-in-out forwards;
 }
 
+.form__active-step-reverse {
+  animation: slide_in_reverse 0.5s ease-in-out forwards;
+}
+
 .form__previous-step {
-  animation: slide_out 0.5s ease-in-out forwards;
+  animation: slide_out 0.5s ease-in-out;
+}
+
+.form__previous-step-reverse {
+  animation: slide_out_reverse 0.5s ease-in-out;
 }
 
 .form__next-step {
   transform: translateX(500px);
 }
 
+/* Slide in animations */
 @keyframes slide_in {
   0% {
     transform: translateX(500px);
@@ -251,6 +256,25 @@ h3 {
   }
 }
 
+@keyframes slide_in_reverse {
+  0% {
+    transform: translateX(-500px);
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  100% {
+    transform: translateX(-50%);
+    opacity: 1;
+    padding: 30px;
+    margin: 30px auto;
+    pointer-events: all;
+  }
+}
+
+/* Slide out animations */
 @keyframes slide_out {
   0% {
     transform: translateX(-50%);
@@ -260,12 +284,26 @@ h3 {
     pointer-events: all;
   }
 
-  /* 20% {
-    opacity: 0;
-  } */
-
   100% {
     transform: translateX(-500px);
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes slide_out_reverse {
+  0% {
+    transform: translateX(-50%);
+    opacity: 1;
+    padding: 30px;
+    margin: 30px auto;
+    pointer-events: all;
+  }
+
+  100% {
+    transform: translateX(500px);
     opacity: 0;
     padding: 0;
     margin: 0;

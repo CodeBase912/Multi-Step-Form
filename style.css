@@ -226,6 +226,11 @@ h3 {
   transform: translateX(-50%);
 }
 
+/* Prevents animation being visible on page load */
+.form_default-step {
+  animation-duration: 0s !important;
+}
+
 .form__active-step {
   animation: slide_in 0.5s ease-in-out forwards;
 }

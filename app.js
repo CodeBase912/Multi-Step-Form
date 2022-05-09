@@ -19,6 +19,7 @@ multi_step_form.addEventListener("click", (e) => {
         card.classList.contains("form__active-step")
       );
       // Remove any reverse animations
+      current_step_card.classList.remove("form_default-step");
       current_step_card.classList.remove("form__active-step-reverse");
       current_step_card.classList.remove("form__previous-step-reverse");
       current_step_card.classList.toggle("form__active-step");

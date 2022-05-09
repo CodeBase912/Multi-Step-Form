@@ -27,7 +27,7 @@
     </header>
     <main>
       <!-- Progress Bar Container -->
-      <div class="progress__container">
+      <div class="progress__container" data-multistep-form-progress-bar>
         <!-- Progress Step 1 -->
         <div class="progress__icon progress__active" data-step-icon="1">
           <svg
@@ -102,10 +102,10 @@
         </div>
       </div>
       <!-- Form Container -->
-      <form id="form">
+      <form id="form" data-multistep-form>
         <!-- Form Step 1 Container -->
         <div
-          class="form__container"
+          class="form__card form__active-step"
           data-step="1"
           data-default-step
           data-step-active="true"
@@ -137,6 +137,7 @@
             />
             <button
               id="step-1-next"
+              type="button"
               class="form__btn"
               data-current-step="1"
               data-action="step-next"
@@ -146,7 +147,11 @@
           </div>
         </div>
         <!-- Form Step 2 Container -->
-        <div class="form__container" data-step="2" data-step-active="false">
+        <div
+          class="form__card form__next-step"
+          data-step="2"
+          data-step-active="false"
+        >
           <h2 class="form__step">Step 2</h2>
           <h3 class="form__title">SOCIAL PROFILES</h3>
           <!-- Form Inputs Container -->
@@ -175,6 +180,7 @@
             <div class="form__buttons">
               <button
                 id="step-2-prev"
+                type="button"
                 class="form__btn-secondary"
                 data-current-step="2"
                 data-action="step-prev"
@@ -183,6 +189,7 @@
               </button>
               <button
                 id="step-2-next"
+                type="button"
                 class="form__btn"
                 data-current-step="2"
                 data-action="step-next"
@@ -193,7 +200,7 @@
           </div>
         </div>
         <!-- Form Step 3 Container -->
-        <div class="form__container" data-step="3" data-step-active="false">
+        <div class="form__card" data-step="3" data-step-active="false">
           <h2 class="form__step">Step 3</h2>
           <h3 class="form__title">PERSONAL DETAILS</h3>
           <!-- Form Inputs Container -->
@@ -229,6 +236,7 @@
             <div class="form__buttons">
               <button
                 id="step-3-prev"
+                type="button"
                 class="form__btn-secondary"
                 data-current-step="3"
                 data-action="step-prev"

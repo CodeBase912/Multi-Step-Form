@@ -6,13 +6,10 @@ const progress_bar = document.querySelector(
 const progress_bar_icons = multi_step_form.querySelectorAll(".progress__step");
 const submit_btn = document.querySelector("#msf-btn-submit");
 
-console.log("progress_bar_icons: ", progress_bar_icons);
-
 // Add click event listener to the multi-step form
 multi_step_form.addEventListener("click", (e) => {
   if (e.target.dataset?.action) {
     // Form button was clicked, handle form step actions
-    console.log(e.target.dataset);
     const currentStep = e.target.dataset.currentStep;
     if (e.target.dataset.action === "next") {
       // Show next form step

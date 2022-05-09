@@ -8,6 +8,7 @@
   --step-text-color: #414141;
   --step-form-title-color: #ffffff;
   --input-text-color: #ebebeb;
+  --input-error-text-color: rgb(189, 5, 5);
   --input-bg-color: rgba(0, 0, 0, 0.58);
   --btn-text-primary-color: #d1d1d1;
   --btn-bg-primary-color: #2b003d;
@@ -144,7 +145,7 @@ h3 {
   width: 100%;
   max-width: 300px;
   text-align: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 .form__input {
@@ -155,8 +156,27 @@ h3 {
   width: 100%;
 }
 
-.form__input:not(:last-child) {
-  margin-bottom: 15px;
+.form__input-error-mode {
+  border: 1px solid var(--input-error-text-color);
+}
+
+.form__input-group {
+  text-align: left;
+  width: 100%;
+  position: relative;
+}
+
+.form__input-label {
+  /* display: none; */
+  /* position: absolute; */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+}
+
+.form__input-group > .form__input-error {
+  font-weight: 500;
+  color: var(--input-error-text-color);
 }
 
 .form__input:focus {
@@ -179,7 +199,7 @@ h3 {
   padding: 10px 0;
   width: 45%;
   cursor: pointer;
-  margin: 10px 0;
+  margin: 30px 0 10px;
   font-weight: 700;
 }
 
@@ -198,7 +218,7 @@ h3 {
   padding: 10px 0;
   width: 45%;
   cursor: pointer;
-  margin: 10px 0;
+  margin: 30px 0 10px;
   font-weight: 700;
 }
 
@@ -264,7 +284,7 @@ h3 {
   100% {
     transform: translateX(-50%);
     opacity: 1;
-    padding: 30px;
+    padding: 20px 30px;
     margin: 30px auto;
     pointer-events: all;
   }
@@ -282,7 +302,7 @@ h3 {
   100% {
     transform: translateX(-50%);
     opacity: 1;
-    padding: 30px;
+    padding: 20px 30px;
     margin: 30px auto;
     pointer-events: all;
   }
@@ -293,7 +313,7 @@ h3 {
   0% {
     transform: translateX(-50%);
     opacity: 1;
-    padding: 30px;
+    padding: 20px 30px;
     margin: 30px auto;
     pointer-events: all;
   }
@@ -311,7 +331,7 @@ h3 {
   0% {
     transform: translateX(-50%);
     opacity: 1;
-    padding: 30px;
+    padding: 20px 30px;
     margin: 30px auto;
     pointer-events: all;
   }

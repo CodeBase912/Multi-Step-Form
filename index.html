@@ -116,28 +116,45 @@
           <h3 class="form__title">CREATE YOUR ACCOUNT</h3>
           <!-- Form Inputs Container -->
           <div class="form__inputs">
-            <input
-              id="email"
-              class="form__input"
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
-            <input
-              id="password"
-              class="form__input"
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
-            <input
-              id="confirmed_password"
-              class="form__input"
-              type="password"
-              name="confirmed_password"
-              placeholder="Confirm Password"
-            />
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="email">Email</label>
+              <input
+                id="email"
+                class="form__input form__input-error-mode"
+                type="email"
+                name="email"
+                placeholder="Email"
+                data-error-message=""
+              />
+              <p class="form__input-error">Please enter a valid email</p>
+            </div>
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="password">
+                Password
+              </label>
+              <input
+                id="password"
+                class="form__input"
+                type="password"
+                name="password"
+                placeholder="Password"
+                pattern="/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/"
+              />
+              <p class="form__input-error"></p>
+            </div>
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="confirmed_password">
+                Confirm Password
+              </label>
+              <input
+                id="confirmed_password"
+                class="form__input"
+                type="password"
+                name="confirmed_password"
+                placeholder="Confirm Password"
+              />
+              <p class="form__input-error"></p>
+            </div>
             <button
               id="step-1-next"
               type="button"
@@ -159,27 +176,45 @@
           <h3 class="form__title">SOCIAL PROFILES</h3>
           <!-- Form Inputs Container -->
           <div class="form__inputs">
-            <input
-              id="facebook"
-              class="form__input"
-              type="link"
-              name="facebook"
-              placeholder="Facebook"
-            />
-            <input
-              id="twitter"
-              class="form__input"
-              type="link"
-              name="twitter"
-              placeholder="Twitter"
-            />
-            <input
-              id="instagram"
-              class="form__input"
-              type="link"
-              name="instagram"
-              placeholder="Instagram"
-            />
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="facebook"
+                >Facebook</label
+              >
+              <input
+                id="facebook"
+                class="form__input"
+                type="link"
+                name="facebook"
+                placeholder="Facebook"
+              />
+              <p class="form__input-error"></p>
+            </div>
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="twitter"
+                >Twitter</label
+              >
+              <input
+                id="twitter"
+                class="form__input"
+                type="link"
+                name="twitter"
+                placeholder="Twitter"
+              />
+              <p class="form__input-error"></p>
+            </div>
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="instagram"
+                >Instagram</label
+              >
+              <input
+                id="instagram"
+                class="form__input"
+                type="link"
+                name="instagram"
+                placeholder="Instagram"
+              />
+              <p class="form__input-error"></p>
+            </div>
             <div class="form__buttons">
               <button
                 id="step-2-prev"
@@ -212,34 +247,56 @@
           <h3 class="form__title">PERSONAL DETAILS</h3>
           <!-- Form Inputs Container -->
           <div class="form__inputs">
-            <input
-              id="first_name"
-              class="form__input"
-              type="text"
-              name="first_name"
-              placeholder="First Name"
-            />
-            <input
-              id="last_name"
-              class="form__input"
-              type="text"
-              name="last_name"
-              placeholder="Last Name"
-            />
-            <input
-              id="phone"
-              class="form__input"
-              type="tel"
-              name="phone"
-              placeholder="Phone"
-            />
-            <input
-              id="address"
-              class="form__input"
-              type="tel"
-              name="address"
-              placeholder="Address"
-            />
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="first_name"
+                >First Name
+              </label>
+              <input
+                id="first_name"
+                class="form__input"
+                type="text"
+                name="first_name"
+                placeholder="First Name"
+              />
+              <p class="form__input-error"></p>
+            </div>
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="last_name"
+                >Last Name
+              </label>
+              <input
+                id="last_name"
+                class="form__input"
+                type="text"
+                name="last_name"
+                placeholder="Last Name"
+              />
+              <p class="form__input-error"></p>
+            </div>
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="phone">Phone</label>
+              <input
+                id="phone"
+                class="form__input"
+                type="tel"
+                name="phone"
+                placeholder="Phone"
+              />
+              <p class="form__input-error"></p>
+            </div>
+            <div class="form__input-group">
+              <label class="form__input-label" labelFor="address">
+                Address
+              </label>
+              <input
+                id="address"
+                class="form__input"
+                type="tel"
+                name="address"
+                placeholder="Address"
+              />
+              <p class="form__input-error"></p>
+            </div>
             <div class="form__buttons">
               <button
                 id="step-3-prev"

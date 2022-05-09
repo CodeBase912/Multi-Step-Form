@@ -22,21 +22,11 @@ multi_step_form.addEventListener("click", (e) => {
       const current_step_card = [...form_step_cards].find((card) =>
         card.classList.contains("form__active-step")
       );
-      // Remove any reverse animations
-      current_step_card.classList.remove("form__default-step");
-      current_step_card.classList.remove("form__active-step-reverse");
-      current_step_card.classList.remove("form__previous-step-reverse");
-      current_step_card.classList.toggle("form__active-step");
-      current_step_card.classList.toggle("form__previous-step");
+      const next_card = form_step_cards[currentStep];
+      const direction = "forward";
 
-      // Then show the next form step
-      const next_form_step_card = form_step_cards[currentStep];
-      // Remove any reverse animations
-      next_form_step_card.classList.remove("form__previous-step-reverse");
-      next_form_step_card.classList.remove("form__active-step-reverse");
-      // Toggle step change animations
-      next_form_step_card.classList.toggle("form__active-step");
-      next_form_step_card.classList.toggle("form__next-step");
+      // Animate step change
+      animateStepCardChange(current_step_card, next_card, direction);
 
       // Update current step progress bar styles
       multi_step_form
@@ -61,19 +51,11 @@ multi_step_form.addEventListener("click", (e) => {
           return true;
         }
       });
-      // Add reverse animations
-      current_step_card.classList.add("form__previous-step-reverse");
-      // Toggle step change animations
-      current_step_card.classList.toggle("form__active-step");
-      current_step_card.classList.toggle("form__next-step");
+      const next_card = form_step_cards[previous_step_index - 1];
+      const direction = "back";
 
-      // Then show the next form step
-      const previous_form_step_card = form_step_cards[previous_step_index - 1];
-      // Add reverse animations
-      previous_form_step_card.classList.add("form__active-step-reverse");
-      // Toggle step change animations
-      previous_form_step_card.classList.toggle("form__active-step");
-      previous_form_step_card.classList.toggle("form__previous-step");
+      // Animate step change
+      animateStepCardChange(current_step_card, next_card, direction);
 
       // Update current step progress bar styles
       multi_step_form
@@ -130,5 +112,51 @@ function validateStepFields(currentStep) {
     return true;
   } else {
     return false;
+  }
+}
+
+/**
+ * animates to the next form step depending on the given direction
+ * @param {Element} current_card the current form step card
+ * @param {Element} next_card the next form step card to bring into view
+ * @param {string} direction default "forward". Enter "back" if you want
+ *                           to animate in the reverse direct (i.e. to
+ *                           the previous form step)
+ */
+function animateStepCardChange(current_card, next_card, direction = "forward") {
+  switch (direction) {
+    case "forward":
+      // Remove any reverse animations
+      current_card.classList.remove("form__default-step");
+      current_card.classList.remove("form__active-step-reverse");
+      current_card.classList.remove("form__previous-step-reverse");
+      current_card.classList.toggle("form__active-step");
+      current_card.classList.toggle("form__previous-step");
+
+      // Remove any reverse animations
+      next_card.classList.remove("form__previous-step-reverse");
+      next_card.classList.remove("form__active-step-reverse");
+      // Toggle step change animations
+      next_card.classList.toggle("form__active-step");
+      next_card.classList.toggle("form__next-step");
+      break;
+
+    case "back":
+      // Add reverse animations
+      current_card.classList.add("form__previous-step-reverse");
+      // Toggle step change animations
+      current_card.classList.toggle("form__active-step");
+      current_card.classList.toggle("form__next-step");
+
+      // Then show the next form step
+      // Add reverse animations
+      next_card.classList.add("form__active-step-reverse");
+      // Toggle step change animations
+      next_card.classList.toggle("form__active-step");
+      next_card.classList.toggle("form__previous-step");
+      break;
+
+    default:
+      break;
   }
 }

@@ -59,10 +59,12 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
   width: 100%;
+  height: calc(100vh - 77.16px);
+  margin: 0 auto;
   max-width: var(--max-width);
   fill: var(--progress-current-color);
+  padding: 0 10px;
 }
 
 /* Progress Bar Styles */
@@ -107,7 +109,9 @@ form {
   width: 100%;
   height: 100%;
   padding: 0 10px 30px 10px;
-  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
 }
 
 form > p,
@@ -201,30 +205,70 @@ h3 {
   background: linear-gradient(to bottom left, #bc82b7, #6f019e98);
   box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.36);
   opacity: 0;
-  height: 0;
-  width: fit-content;
+  padding: 0;
+  margin: 0;
+  height: max-content;
+  width: 100%;
+  max-width: fit-content;
   pointer-events: none;
-  transition: all 0.5s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .form__active-step {
-  transform: translateX(0px);
   opacity: 1;
-  pointer-events: all;
-  height: fit-content;
-  margin: 30px auto;
   padding: 30px;
+  margin: 30px auto;
+  pointer-events: all;
+  animation: slide_in 0.5s ease-in-out forwards;
 }
 
 .form__previous-step {
-  transform: translateX(-500px);
-  opacity: 0;
-  height: 0;
-  margin: 0;
+  animation: slide_out 0.5s ease-in-out forwards;
 }
 
 .form__next-step {
   transform: translateX(500px);
-  opacity: 0;
-  height: 0;
+}
+
+@keyframes slide_in {
+  0% {
+    transform: translateX(500px);
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  100% {
+    transform: translateX(-50%);
+    opacity: 1;
+    padding: 30px;
+    margin: 30px auto;
+    pointer-events: all;
+  }
+}
+
+@keyframes slide_out {
+  0% {
+    transform: translateX(-50%);
+    opacity: 1;
+    padding: 30px;
+    margin: 30px auto;
+    pointer-events: all;
+  }
+
+  /* 20% {
+    opacity: 0;
+  } */
+
+  100% {
+    transform: translateX(-500px);
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+  }
 }

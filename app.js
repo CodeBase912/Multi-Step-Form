@@ -28,18 +28,8 @@ multi_step_form.addEventListener("click", (e) => {
       // Animate step change
       animateStepCardChange(current_step_card, next_card, direction);
 
-      // Update current step progress bar styles
-      multi_step_form
-        .querySelector(".progress__step-active")
-        .classList.add("progress__step-complete");
-      multi_step_form
-        .querySelector(".progress__step-active")
-        .classList.remove("progress__step-active");
-
-      progress_bar_icons[currentStep].classList.remove(
-        "progress__step-inactive"
-      );
-      progress_bar_icons[currentStep].classList.add("progress__step-active");
+      // Handle progress bar step change
+      handleProgressBarChange(multi_step_form, progress_bar_icons, currentStep);
     } else if (e.target.dataset.action === "previous") {
       // Show previous form step
 
@@ -57,15 +47,12 @@ multi_step_form.addEventListener("click", (e) => {
       // Animate step change
       animateStepCardChange(current_step_card, next_card, direction);
 
-      // Update current step progress bar styles
-      multi_step_form
-        .querySelector(".progress__step-active")
-        .classList.add("progress__step-inactive");
-      multi_step_form
-        .querySelector(".progress__step-active")
-        .classList.remove("progress__step-active");
-      progress_bar_icons[previous_step_index - 1].classList.add(
-        "progress__step-active"
+      // Handle progress bar step change
+      handleProgressBarChange(
+        multi_step_form,
+        progress_bar_icons,
+        previous_step_index - 1,
+        direction
       );
     } else if (e.target.dataset.action === "submit") {
       // Submit the form
@@ -120,7 +107,7 @@ function validateStepFields(currentStep) {
  * @param {Element} current_card the current form step card
  * @param {Element} next_card the next form step card to bring into view
  * @param {string} direction default "forward". Enter "back" if you want
- *                           to animate in the reverse direct (i.e. to
+ *                           to animate in the reverse direction (i.e. to
  *                           the previous form step)
  */
 function animateStepCardChange(current_card, next_card, direction = "forward") {
@@ -154,6 +141,54 @@ function animateStepCardChange(current_card, next_card, direction = "forward") {
       // Toggle step change animations
       next_card.classList.toggle("form__active-step");
       next_card.classList.toggle("form__previous-step");
+      break;
+
+    default:
+      break;
+  }
+}
+
+/**
+ * handles updating the status of the progress bar on form step
+ * change
+ * @param {Element} multi_step_form the multistep form container/element
+ * @param {NodeListOf<Element>} progress_bar_icons list of the progress step icon elements
+ * @param {number} currentStep the current form step. First step = 1
+ * @param {string} direction default "forward". Enter "back" if you want
+ *                           to animate in the reverse direction (i.e. to
+ *                           the previous form step)
+ */
+function handleProgressBarChange(
+  multi_step_form,
+  progress_bar_icons,
+  currentStep,
+  direction = "forward"
+) {
+  switch (direction) {
+    case "forward":
+      // Update current step progress bar styles
+      multi_step_form
+        .querySelector(".progress__step-active")
+        .classList.add("progress__step-complete");
+      multi_step_form
+        .querySelector(".progress__step-active")
+        .classList.remove("progress__step-active");
+
+      progress_bar_icons[currentStep].classList.remove(
+        "progress__step-inactive"
+      );
+      progress_bar_icons[currentStep].classList.add("progress__step-active");
+      break;
+
+    case "back":
+      // Update current step progress bar styles
+      multi_step_form
+        .querySelector(".progress__step-active")
+        .classList.add("progress__step-inactive");
+      multi_step_form
+        .querySelector(".progress__step-active")
+        .classList.remove("progress__step-active");
+      progress_bar_icons[currentStep].classList.add("progress__step-active");
       break;
 
     default:

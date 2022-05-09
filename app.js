@@ -1,5 +1,6 @@
 const multi_step_form = document.querySelector("[data-multistep-form]");
 const form_step_cards = document.querySelectorAll(".form__card");
+const form_inputs = document.querySelectorAll(".form__input");
 const progress_bar = document.querySelector(
   "[data-multistep-form-progress-bar]"
 );
@@ -12,8 +13,25 @@ multi_step_form.addEventListener("click", (e) => {
     // Form button was clicked, handle form step actions
     const currentStep = e.target.dataset.currentStep;
     if (e.target.dataset.action === "next") {
-      // Show next form step
+      // Validate current step input fields
+      const step_inputs_elements =
+        form_step_cards[currentStep - 1].querySelectorAll(".form__input");
+      const isInputError = [...step_inputs_elements].find(
+        (input_element, input_element_index) => {
+          console.log("Valid: ", input_element.checkValidity());
+          if (!input_element.checkValidity()) {
+            console.log(
+              `${input_element.getAttribute("name")} validation error: `,
+              input_element.validationMessage
+            );
+            return true;
+          }
+        }
+      );
 
+      if (isInputError) return;
+
+      // Show next form step
       // Start by hiding current form step
       const current_step_card = [...form_step_cards].find((card) =>
         card.classList.contains("form__active-step")

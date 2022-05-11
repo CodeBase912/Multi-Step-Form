@@ -111,6 +111,8 @@ function validateStepFields(currentStep) {
  *                           the previous form step)
  */
 function animateStepCardChange(current_card, next_card, direction = "forward") {
+  //   current_card.style.animationDuration = "0s";
+  //   next_card.style.animationDuration = "0s";
   switch (direction) {
     case "forward":
       // Remove any reverse animations

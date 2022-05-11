@@ -125,7 +125,6 @@
                 name="email"
                 placeholder="Email"
                 data-error-message=""
-                required
               />
               <p class="form__input-error"></p>
             </div>
@@ -139,7 +138,7 @@
                 type="password"
                 name="password"
                 placeholder="Password"
-                required
+                pattern="/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/"
               />
               <p class="form__input-error"></p>
             </div>
@@ -153,7 +152,6 @@
                 type="password"
                 name="confirmed_password"
                 placeholder="Confirm Password"
-                required
               />
               <p class="form__input-error"></p>
             </div>
@@ -323,6 +321,6 @@
         </div>
       </form>
     </main>
-    <script src="./app.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

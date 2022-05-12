@@ -1,0 +1,15 @@
+{
+  "name": "@codebase912/multi-step-form",
+  "version": "0.0.1",
+  "description": "A library that makes building multi-step forms quick and easy",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "/src/**/*"
+  ],
+  "keywords": [],
+  "author": "Tshepo Tsilo",
+  "license": "ISC"
+}

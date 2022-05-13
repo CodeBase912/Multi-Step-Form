@@ -47,6 +47,8 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
+    "@testing-library/dom": "^8.13.0",
+    "@testing-library/jest-dom": "^5.16.4",
     "@types/jest": "^27.5.1",
     "husky": "^8.0.0",
     "size-limit": "^7.0.8",

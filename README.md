@@ -1,103 +1,85 @@
-# TSDX User Guide
+<!--Put badges at the very top -->
+<!-- Travis CI: change the repos (required) -->
+<!-- Metrics collection: Follow the setup instructions for the appropriate client in https://github.com/IBM/metrics-collector-service (required) -->
+<!-- remove metrics badge if no metrics collection is performed -->
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+# Welcome to Multi Step Form!
 
-> This TSDX setup is meant for developing libraries (not apps!) that can be published to NPM. If you’re looking to build a Node app, you could use `ts-node-dev`, plain `ts-node`, or simple `tsc`.
+Multi Step Form is an **event-based** javascript package that makes building multi-step forms straightforward and easy. encourages good form design by providing an API that allows you to build **customizable** multi-step forms that bring in high conversion rates to your sales process, marketing funnel, etc. Multi Step Form encourages good form design
 
-> If you’re new to TypeScript, checkout [this handy cheatsheet](https://devhints.io/typescript)
+# Architecture
 
-## Commands
+At it's core Multi Step Form has an event manager that handles all form events including attaching and removing any event listeners to the form's DOM structure. The eevnt manager dispatches events to the other layers that are built on top of this core event layer that handle form UI (Service layer) and form State (State Layer). The diagram below gives a rough overview of this design.
 
-TSDX scaffolds your new library inside `/src`.
+[UML Diagram](./architecture.drawio.png 'Architecture')
 
-To run TSDX, use:
+# Contributing
 
-```bash
-npm start # or yarn start
+> NOTE: These steps are only needed when running locally instead of using the `Deploy to IBM Cloud` button.
+
+<!-- there are MANY updates necessary here, change the steps then walk through in detail with screenshots where appropriate -->
+
+1. Clone the `Multi-Step-Form` repo locally.
+2. Make a new branch: `$ git checkout -b [name-of-your-branch]`.
+3. Add a feature, fix a bug, refactor some code or update the docs :)
+4. Write/update tests for the changes you made, if necessary.
+5. Run unit tests and make sure all tests pass.
+6. Update `README.md` if necessary.
+7. Open a Pull Request with a comprehensive description of changes.
+
+### 1. Clone the repo
+
+Clone the `Multi-Step-Form` repo locally and navigate into it. In a terminal, run:
+
+```
+$ git clone https://github.com/ibm-watson-data-lab/shopping-list-preact-pouchdb.git
+$ cd Multi-Step-Form
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+### 2. Make a new branch
 
-To do a one-off build, use `npm run build` or `yarn build`.
+Make a new branch in which you will make your contributions. Run the following command:
 
-To run tests, use `npm test` or `yarn test`.
-
-## Configuration
-
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
-
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle Analysis
-
-[`size-limit`](https://github.com/ai/size-limit) is set up to calculate the real cost of your library with `npm run size` and visualize the bundle with `npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
+```
+$ git checkout -b [name-of-your-branch]
 ```
 
-### Rollup
+### 3. Add a feature, fix a bug, refactor some code or update the docs :)
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+Add your changes and document your code explaining what it does.
 
-### TypeScript
+### 4. Write/update tests for the changes you made, if necessary
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
+Write/update tests if you make any changes to the codebase.
 
-## Continuous Integration
+### 5. Run unit tests and make sure all tests pass
 
-### GitHub Actions
+Make sure all the tests pass before making a pull request. Enter the following command
+in the root folder of the project to run unit tests:
 
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
+```
+$ npm run test
 ```
 
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
+Make sure all the tests are passed before you commit any changes.
 
-## Module Formats
+### 6. Update `README.md` if necessary
 
-CJS, ESModules, and UMD module formats are supported.
+Please document your changes in the `README.md` file if necessary
 
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
+### 7. Open a Pull Request with a comprehensive description of changes.
 
-## Named Exports
+## Running the tests
 
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
+<!-- replace with test information, if there are tests defined -->
 
-## Including Styles
+This project does not, at present, have any automated tests. If you'd like to contribute some then please raise and issue and submit a pull-request - we'd be very happy to add them! Any pull-request you contribute will run through our continuous integration process which will check your code style.
 
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
+## Featured technologies
 
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
+- [Typescript](https://www.typescriptlang.org/)
+- [Jest](https://jestjs.io/)
 
-## Publishing to NPM
+# License
 
-We recommend using [np](https://github.com/sindresorhus/np).
+[MIT](LICENSE)

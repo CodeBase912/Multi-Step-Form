@@ -1,15 +1,57 @@
 {
-  "name": "@codebase912/multi-step-form",
   "version": "0.0.1",
-  "description": "A library that makes building multi-step forms quick and easy",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "files": [
-    "/src/**/*"
+    "dist",
+    "src"
   ],
-  "keywords": [],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx test && tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "@codebase912/multi-step-form",
+  "description": "A library that makes building multi-step forms quick and easy",
   "author": "Tshepo Tsilo",
-  "license": "ISC"
+  "module": "dist/@codebase912/multi-step-form.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/@codebase912/multi-step-form.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/@codebase912/multi-step-form.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@types/jest": "^27.5.1",
+    "husky": "^8.0.1",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4"
+  }
 }

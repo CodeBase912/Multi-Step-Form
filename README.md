@@ -11,13 +11,9 @@ Multi Step Form is an **event-based** javascript package that makes building mul
 
 At it's core Multi Step Form has an event manager that handles all form events including attaching and removing any event listeners to the form's DOM structure. The eevnt manager dispatches events to the other layers that are built on top of this core event layer that handle form UI (Service layer) and form State (State Layer). The diagram below gives a rough overview of this design.
 
-[UML Diagram](./architecture.drawio.png 'Architecture')
+![Architechture](architecture.png 'Architechture')
 
 # Contributing
-
-> NOTE: These steps are only needed when running locally instead of using the `Deploy to IBM Cloud` button.
-
-<!-- there are MANY updates necessary here, change the steps then walk through in detail with screenshots where appropriate -->
 
 1. Clone the `Multi-Step-Form` repo locally.
 2. Make a new branch: `$ git checkout -b [name-of-your-branch]`.

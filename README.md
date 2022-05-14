@@ -19,7 +19,7 @@ At it's core Multi Step Form has an event manager that handles all form events i
 2. Make a new branch: `$ git checkout -b [name-of-your-branch]`.
 3. Add a feature, fix a bug, refactor some code or update the docs :)
 4. Write/update tests for the changes you made, if necessary.
-5. Run unit tests and make sure all tests pass.
+5. Run unit tests to make sure all everything is working nice ;).
 6. Update `README.md` if necessary.
 7. Open a Pull Request with a comprehensive description of changes.
 
@@ -42,13 +42,13 @@ $ git checkout -b [name-of-your-branch]
 
 ### 3. Add a feature, fix a bug, refactor some code or update the docs :)
 
-Add your changes and document your code explaining what it does.
+Add your changes and document your code explaining what it does. The more (comments) the merrier, makes it easier for anyone to understand your work.
 
 ### 4. Write/update tests for the changes you made, if necessary
 
-Write/update tests if you make any changes to the codebase.
+Write/update unit tests if you make any changes to the codebase.
 
-### 5. Run unit tests and make sure all tests pass
+### 5. Run unit tests to make sure all everything is working nice ;)
 
 Make sure all the tests pass before making a pull request. Enter the following command
 in the root folder of the project to run unit tests:
@@ -57,7 +57,13 @@ in the root folder of the project to run unit tests:
 $ npm run test
 ```
 
-Make sure all the tests are passed before you commit any changes.
+Please make sure all the tests are passed and linting rules are follwed before you commit any changes. To run the automated linter, in your terminal run:
+
+```
+$ npm run lint
+```
+
+This will check, fix the format of your code to ensure a uniform code style throughout the codebase and report any typescript issues.
 
 ### 6. Update `README.md` if necessary
 
@@ -65,11 +71,7 @@ Please document your changes in the `README.md` file if necessary
 
 ### 7. Open a Pull Request with a comprehensive description of changes.
 
-## Running the tests
-
-<!-- replace with test information, if there are tests defined -->
-
-This project does not, at present, have any automated tests. If you'd like to contribute some then please raise and issue and submit a pull-request - we'd be very happy to add them! Any pull-request you contribute will run through our continuous integration process which will check your code style.
+Any pull-request you contribute will run through our continuous integration process which will check your code style.
 
 ## Featured technologies
 

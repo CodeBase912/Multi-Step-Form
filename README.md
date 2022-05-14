@@ -28,7 +28,7 @@ At it's core Multi Step Form has an event manager that handles all form events i
 Clone the `Multi-Step-Form` repo locally and navigate into it. In a terminal, run:
 
 ```
-$ git clone https://github.com/ibm-watson-data-lab/shopping-list-preact-pouchdb.git
+$ git clone https://github.com/CodeBase912/Multi-Step-Form.git
 $ cd Multi-Step-Form
 ```
 

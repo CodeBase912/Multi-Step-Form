@@ -45,9 +45,8 @@ describe('Form object', () => {
     expect(newForm).toThrow(TypeError);
   });
 
-  // Test if the form object can be instaltiated
+  // Test if the form object has a template
   it('has template', () => {
-    //@ts-ignore
     const form = new Form(options);
     expect(form.template).toEqual(options.formTemplate);
   });

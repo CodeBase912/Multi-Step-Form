@@ -1,5 +1,8 @@
 class Form {
-  template;
+  template: {
+    stepElementId: string;
+    inputsTemplate: InputTemplate[];
+  }[];
 
   constructor(options: Options) {
     this.template = options.formTemplate;

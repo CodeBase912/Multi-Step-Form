@@ -9,7 +9,7 @@
 
 // Import the package from the /dist folder since this is the
 // version that will be used in production
-import Form from '../dist/multi-step-form.esm.js';
+import Form from './dist/multi-step-form.esm.js';
 
 const options = {
 	appendTo: '#form-container',

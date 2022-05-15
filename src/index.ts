@@ -25,6 +25,10 @@ class Form {
 
 		// Append form element to form container
 		formContainer?.appendChild(formElement);
+
+		// const input = document.createElement("input");
+		// input.setAttribute("id", "test");
+		// formContainer.appendChild(input);
 	}
 }
 

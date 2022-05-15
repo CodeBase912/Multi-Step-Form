@@ -31,8 +31,11 @@
   "prettier": {
     "printWidth": 80,
     "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
+    "trailingComma": "es5",
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "endOfLine": "auto",
+    "tabWidth": 2
   },
   "name": "@codebase912/multi-step-form",
   "description": "A library that makes building multi-step forms quick and easy",

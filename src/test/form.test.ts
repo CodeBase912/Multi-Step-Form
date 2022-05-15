@@ -1,18 +1,18 @@
-import Form from "..";
+import Form from '..';
 
 const options = {
-	appendTo: "#form-container",
+	appendTo: '#form-container',
 	formSteps: 3,
 	formTemplate: [
 		{
-			stepElementId: "#step-1",
+			stepElementId: '#step-1',
 			inputsTemplate: [
 				{
-					formElement: "input", // the type of HTML input tag, e.g. input or select
-					type: "text", // the type of input expected e.g text, email, tel, date. Allows the browser to display the appropriate keypad on mobile devices
-					name: "first_name", // the "name" field of a form input
-					placeholder: "First Name",
-					defaultValue: "John",
+					formElement: 'input', // the type of HTML input tag, e.g. input or select
+					type: 'text', // the type of input expected e.g text, email, tel, date. Allows the browser to display the appropriate keypad on mobile devices
+					name: 'first_name', // the "name" field of a form input
+					placeholder: 'First Name',
+					defaultValue: 'John',
 					// Can define any HTML input attributes here
 					attributes: {
 						required: true,
@@ -33,9 +33,9 @@ const options = {
 	],
 };
 
-describe("Form object", () => {
+describe('Form object', () => {
 	// Test if error is thrown if no options passed
-	it("cannot be instantiated without options", () => {
+	it('cannot be instantiated without options', () => {
 		const newForm = () => {
 			new Form();
 		};
@@ -43,7 +43,7 @@ describe("Form object", () => {
 	});
 
 	// Test if the form object has a template
-	it("has template", () => {
+	it('has template', () => {
 		const form = new Form(options);
 		expect(form.template).toEqual(options.formTemplate);
 	});

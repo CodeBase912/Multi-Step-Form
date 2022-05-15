@@ -1,7 +1,7 @@
 import Form from '..';
-// import { screen } from "@testing-library/dom";
+import { screen } from '@testing-library/dom';
 
-const options = {
+const options: Options = {
 	appendTo: '#form-container',
 	formSteps: 3,
 	formTemplate: [
@@ -9,14 +9,14 @@ const options = {
 			stepElementId: '#step-1',
 			inputsTemplate: [
 				{
-					formElement: 'input', // the type of HTML input tag, e.g. input or select
-					type: 'text', // the type of input expected e.g text, email, tel, date. Allows the browser to display the appropriate keypad on mobile devices
-					name: 'first_name', // the "name" field of a form input
-					label: 'First Name',
-					placeholder: 'First Name',
-					defaultValue: 'John',
-					// Can define any HTML input attributes here
+					tagName: 'input', // the type of HTML input tag, e.g. input or select
 					attributes: {
+						type: 'text', // the type of input expected e.g text, email, tel, date. Allows the browser to display the appropriate keypad on mobile devices
+						name: 'first_name', // the "name" field of a form input
+						labelText: 'First Name',
+						placeholder: 'First Name',
+						defaultValue: 'John',
+						// Can define any HTML input attributes here
 						required: true,
 						readOnly: false,
 						min: 10,
@@ -92,15 +92,40 @@ describe('Form object constuctor', () => {
 	});
 
 	// Test if Form class renders the first name text input
-	// it("renders a first name text input", () => {
-	//   new Form(options);
-	//   expect(screen.getByLabelText("First Name")).toBeInTheDocument();
-	// });
+	it('renders a first name text input', () => {
+		// Provide the form container
+		provideFormContainer(htmlBody);
+		new Form(options);
+		// Test if the input label text is rendered on the screen
+		expect(screen.getByLabelText('First Name')).not.toBeNull();
+	});
 });
 
 // ----------------------------------------------------------------------
-// Test Form Class constructor
+// Test RenderService Class constructor
 // ----------------------------------------------------------------------
+
+describe('RenderService Class', () => {
+	let htmlBody: HTMLElement;
+	beforeEach(() => {
+		// Get the rendered HTML
+		htmlBody = document.body;
+	});
+
+	afterEach(() => {
+		// Remove the Form container
+		removeFormContainer(htmlBody);
+	});
+
+	// Test if Form class renders the first name text input
+	it('renders a first name text input', () => {
+		// Provide the form container
+		provideFormContainer(htmlBody);
+		new Form(options);
+		// Test if the input label text is rendered on the screen
+		expect(screen.getByLabelText('First Name')).not.toBeNull();
+	});
+});
 
 // ----------------------------------------------------------------------
 // Utility Functions

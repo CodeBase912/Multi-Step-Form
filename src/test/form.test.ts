@@ -34,6 +34,17 @@ const options = {
 };
 
 describe('Form object', () => {
+	let htmlBody: HTMLElement;
+	beforeEach(() => {
+		// Get the rendered HTML
+		htmlBody = document.body;
+	});
+
+	afterEach(() => {
+		// Remove the Form container
+		removeFormContainer(htmlBody);
+	});
+
 	// Test if error is thrown if no options passed
 	it('cannot be instantiated without options', () => {
 		const newForm = () => {
@@ -42,9 +53,79 @@ describe('Form object', () => {
 		expect(newForm).toThrow(TypeError);
 	});
 
-	// Test if the form object has a template
-	it('has template', () => {
-		const form = new Form(options);
-		expect(form.template).toEqual(options.formTemplate);
+	// Test if Form object can render the form element
+	it('can render the form element given form container is defined in the HTML page', () => {
+		// Provide the form container
+		provideFormContainer(htmlBody);
+		// Instantiate the Form
+		new Form(options);
+		// Expect form element to be rendered by Form constructor
+		expect(htmlBody.querySelector('form')).not.toBeNull();
+	});
+
+	// Test if Form object can render the form element
+	it('can throw an error if the element to appendTo does not exist', () => {
+		// NOTE: the form container is not provided rendered since we do
+		// not run the provideFormContainer method
+
+		// Instantiate the Form
+		const newForm = () => {
+			new Form(options);
+		};
+
+		// Expect the Form constructor to throw an error since form container
+		// is not in the HTML document
+		expect(newForm).toThrow(Error);
 	});
 });
+
+// ----------------------------------------------------------------------
+// Utility Functions
+// ----------------------------------------------------------------------
+
+/**
+ * renders the formContainer to which the form will be appended to
+ * @param htmlBody the HTML Body element of the page in
+ *                               which the formContainer will be rendered
+ * @returns the rendered formContainer Div element
+ *
+ * @description
+ * This function implements the following test scenario:
+ *
+ * User should provide an HTML file that contains a Div
+ * element with an id = `form-container`
+ */
+function provideFormContainer(htmlBody: HTMLElement) {
+	// Create the form container that should be provided
+	// by the user.
+	const formContainer = document.createElement('div');
+
+	// Set the Div element's id = `form-container`
+	formContainer.setAttribute('id', 'form-container');
+	// Attach the form container to the HTML page body element
+	htmlBody.appendChild(formContainer);
+
+	return formContainer;
+}
+
+/**
+ * removes the formContainer from the htmlBody
+ * @param htmlBody the HTML Body element of the page in
+ *                               which the formContainer will be rendered
+ *
+ * @description
+ * This function implements the following test scenario:
+ *
+ * User did not provide an HTML file that contains a Div
+ * element with an id = `form-container`
+ */
+function removeFormContainer(htmlBody: HTMLElement) {
+	// Create the form container that should be provided
+	// by the user.
+	const formContainer = htmlBody.querySelector('#form-container');
+
+	if (formContainer) {
+		// Remove the form container from the HTML page body element
+		formContainer.remove();
+	}
+}

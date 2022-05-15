@@ -1,4 +1,4 @@
-import RenderService from './render-service';
+import RenderService from "./render-service";
 
 // ---------------------------------------------------------------------
 // Service Layer
@@ -11,7 +11,7 @@ class Service {
 	constructor(options?: Options) {
 		if (!options) {
 			throw new TypeError(
-				'options object is undefined. Use {} for default options'
+				"options object is undefined. Use {} for default options"
 			);
 		}
 		this.template = options.formTemplate;
@@ -25,7 +25,7 @@ class Service {
 		}
 
 		// Create the form element
-		const formElement = createElement('form');
+		const formElement = createElement("form");
 		// Render the form template
 		this.RenderService = new RenderService(formElement, this.template);
 

@@ -1,21 +1,21 @@
-import Service from '../service';
-import { screen } from '@testing-library/dom';
+import Service from "../service";
+import { screen } from "@testing-library/dom";
 
 const options: Options = {
-	appendTo: '#form-container',
+	appendTo: "#form-container",
 	formSteps: 3,
 	formTemplate: [
 		{
-			stepElementId: '#step-1',
+			stepElementId: "#step-1",
 			inputsTemplate: [
 				{
-					tagName: 'input', // the type of HTML input tag, e.g. input or select
+					tagName: "input", // the type of HTML input tag, e.g. input or select
 					attributes: {
-						type: 'text', // the type of input expected e.g text, email, tel, date. Allows the browser to display the appropriate keypad on mobile devices
-						name: 'first_name', // the "name" field of a form input
-						labelText: 'First Name',
-						placeholder: 'First Name',
-						defaultValue: 'John',
+						type: "text", // the type of input expected e.g text, email, tel, date. Allows the browser to display the appropriate keypad on mobile devices
+						name: "first_name", // the "name" field of a form input
+						labelText: "First Name",
+						placeholder: "First Name",
+						defaultValue: "John",
 						// Can define any HTML input attributes here
 						required: true,
 						readOnly: false,
@@ -39,7 +39,7 @@ const options: Options = {
 // Test Service Class constructor
 // ----------------------------------------------------------------------
 
-describe('Service object constuctor', () => {
+describe("Service object constuctor", () => {
 	let htmlBody: HTMLElement;
 	beforeEach(() => {
 		// Get the rendered HTML
@@ -52,7 +52,7 @@ describe('Service object constuctor', () => {
 	});
 
 	// Test if error is thrown if no options passed
-	it('cannot run without options', () => {
+	it("cannot run without options", () => {
 		const newService = () => {
 			new Service();
 		};
@@ -60,17 +60,17 @@ describe('Service object constuctor', () => {
 	});
 
 	// Test if Service object can render the form element
-	it('can render the form element given form container is defined in the HTML page', () => {
+	it("can render the form element given form container is defined in the HTML page", () => {
 		// Provide the form container
 		provideFormContainer(htmlBody);
 		// Instantiate the Service
 		new Service(options);
 		// Expect form element to be rendered by Service constructor
-		expect(htmlBody.querySelector('form')).not.toBeNull();
+		expect(htmlBody.querySelector("form")).not.toBeNull();
 	});
 
 	// Test if Service object can render the form element
-	it('can throw an error if the element to appendTo does not exist', () => {
+	it("can throw an error if the element to appendTo does not exist", () => {
 		// NOTE: the form container is not provided rendered since we do
 		// not run the provideFormContainer method
 
@@ -92,12 +92,12 @@ describe('Service object constuctor', () => {
 	});
 
 	// Test if Service class renders the first name text input
-	it('renders a first name text input', () => {
+	it("renders a first name text input", () => {
 		// Provide the form container
 		provideFormContainer(htmlBody);
 		new Service(options);
 		// Test if the input label text is rendered on the screen
-		expect(screen.getByLabelText('First Name')).not.toBeNull();
+		expect(screen.getByLabelText("First Name")).not.toBeNull();
 	});
 });
 
@@ -105,7 +105,7 @@ describe('Service object constuctor', () => {
 // Test RenderService Class constructor
 // ----------------------------------------------------------------------
 
-describe('RenderService Class', () => {
+describe("RenderService Class", () => {
 	let htmlBody: HTMLElement;
 	beforeEach(() => {
 		// Get the rendered HTML
@@ -118,12 +118,12 @@ describe('RenderService Class', () => {
 	});
 
 	// Test if Service class renders the first name text input
-	it('renders a first name text input', () => {
+	it("renders a first name text input", () => {
 		// Provide the form container
 		provideFormContainer(htmlBody);
 		new Service(options);
 		// Test if the input label text is rendered on the screen
-		expect(screen.getByLabelText('First Name')).not.toBeNull();
+		expect(screen.getByLabelText("First Name")).not.toBeNull();
 	});
 });
 
@@ -146,10 +146,10 @@ describe('RenderService Class', () => {
 function provideFormContainer(htmlBody: HTMLElement) {
 	// Create the form container that should be provided
 	// by the user.
-	const formContainer = document.createElement('div');
+	const formContainer = document.createElement("div");
 
 	// Set the Div element's id = `form-container`
-	formContainer.setAttribute('id', 'form-container');
+	formContainer.setAttribute("id", "form-container");
 	// Attach the form container to the HTML page body element
 	htmlBody.appendChild(formContainer);
 
@@ -170,7 +170,7 @@ function provideFormContainer(htmlBody: HTMLElement) {
 function removeFormContainer(htmlBody: HTMLElement) {
 	// Create the form container that should be provided
 	// by the user.
-	const formContainer = htmlBody.querySelector('#form-container');
+	const formContainer = htmlBody.querySelector("#form-container");
 
 	if (formContainer) {
 		// Remove the form container from the HTML page body element

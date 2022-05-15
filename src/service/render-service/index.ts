@@ -1,4 +1,4 @@
-import { createElement, createInputElement } from './render-service-util';
+import { createElement, createInputElement } from "./render-service-util";
 
 // ---------------------------------------------------------------------
 // Render Service
@@ -24,7 +24,7 @@ class RenderService implements RenderServiceInterface {
 				: `step-${formStepIndex}`;
 
 			// Render the form step container
-			const formStepContainer = createElement('div', { id: formStepId });
+			const formStepContainer = createElement("div", { id: formStepId });
 
 			// Loop through inputs array and render each input field
 			formStep.inputsTemplate.map((inputTemplate) => {
@@ -43,12 +43,12 @@ class RenderService implements RenderServiceInterface {
 		const inputId = inputTemplate.attributes?.id
 			? inputTemplate.attributes.id
 			: inputTemplate.attributes.name;
-		const inputGroupContainer = createElement('div', {
+		const inputGroupContainer = createElement("div", {
 			id: `input-group-${inputId}`,
 		});
 
 		// Create label element and append to inputGroupContainer
-		const label = createElement('label', { for: inputId });
+		const label = createElement("label", { for: inputId });
 		label.innerHTML = inputTemplate.attributes.labelText
 			? inputTemplate.attributes.labelText
 			: inputTemplate.attributes.name;
@@ -62,7 +62,7 @@ class RenderService implements RenderServiceInterface {
 		inputGroupContainer.appendChild(input);
 
 		// Create error message element and append to inputGroupContainer
-		const errorMsg = createElement('p', { class: 'input-error-inactive' });
+		const errorMsg = createElement("p", { class: "input-error-inactive" });
 		inputGroupContainer.appendChild(errorMsg);
 
 		// Append the input group to the formStepContainer

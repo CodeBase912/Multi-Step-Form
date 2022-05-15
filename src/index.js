@@ -22,6 +22,7 @@ const options = {
 					formElement: 'input', // the type of HTML input tag, e.g. input or select
 					type: 'text', // the type of input expected e.g text, email, tel, date. Allows the browser to display the appropriate keypad on mobile devices
 					name: 'first_name', // the "name" field of a form input
+					label: 'First Name',
 					placeholder: 'First Name',
 					defaultValue: 'John',
 					// Can define any HTML input attributes here

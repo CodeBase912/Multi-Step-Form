@@ -1,4 +1,5 @@
 import Form from '..';
+// import { screen } from "@testing-library/dom";
 
 const options = {
 	appendTo: '#form-container',
@@ -11,6 +12,7 @@ const options = {
 					formElement: 'input', // the type of HTML input tag, e.g. input or select
 					type: 'text', // the type of input expected e.g text, email, tel, date. Allows the browser to display the appropriate keypad on mobile devices
 					name: 'first_name', // the "name" field of a form input
+					label: 'First Name',
 					placeholder: 'First Name',
 					defaultValue: 'John',
 					// Can define any HTML input attributes here
@@ -33,7 +35,11 @@ const options = {
 	],
 };
 
-describe('Form object', () => {
+// ----------------------------------------------------------------------
+// Test Form Class constructor
+// ----------------------------------------------------------------------
+
+describe('Form object constuctor', () => {
 	let htmlBody: HTMLElement;
 	beforeEach(() => {
 		// Get the rendered HTML
@@ -46,7 +52,7 @@ describe('Form object', () => {
 	});
 
 	// Test if error is thrown if no options passed
-	it('cannot be instantiated without options', () => {
+	it('cannot run without options', () => {
 		const newForm = () => {
 			new Form();
 		};
@@ -73,11 +79,28 @@ describe('Form object', () => {
 			new Form(options);
 		};
 
+		/**
+     * ----------------------------------------------------------
+     * TODO: this assertion is an implimentation test. Rather test if the
+     * form element is not rendered
+     * ----------------------------------------------------------
+     */
+
 		// Expect the Form constructor to throw an error since form container
 		// is not in the HTML document
 		expect(newForm).toThrow(Error);
 	});
+
+	// Test if Form class renders the first name text input
+	// it("renders a first name text input", () => {
+	//   new Form(options);
+	//   expect(screen.getByLabelText("First Name")).toBeInTheDocument();
+	// });
 });
+
+// ----------------------------------------------------------------------
+// Test Form Class constructor
+// ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
 // Utility Functions

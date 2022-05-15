@@ -2,7 +2,8 @@ type InputTemplate = {
   formElement: string;
   type: string;
   name: string;
-  placeholder: string;
+  label: string;
+  placeholder?: string;
   defaultValue: string;
   attributes: {
     required: boolean;

@@ -1,4 +1,4 @@
-import Form from '..';
+import Service from '../service';
 import { screen } from '@testing-library/dom';
 
 const options: Options = {
@@ -36,10 +36,10 @@ const options: Options = {
 };
 
 // ----------------------------------------------------------------------
-// Test Form Class constructor
+// Test Service Class constructor
 // ----------------------------------------------------------------------
 
-describe('Form object constuctor', () => {
+describe('Service object constuctor', () => {
 	let htmlBody: HTMLElement;
 	beforeEach(() => {
 		// Get the rendered HTML
@@ -53,30 +53,30 @@ describe('Form object constuctor', () => {
 
 	// Test if error is thrown if no options passed
 	it('cannot run without options', () => {
-		const newForm = () => {
-			new Form();
+		const newService = () => {
+			new Service();
 		};
-		expect(newForm).toThrow(TypeError);
+		expect(newService).toThrow(TypeError);
 	});
 
-	// Test if Form object can render the form element
+	// Test if Service object can render the form element
 	it('can render the form element given form container is defined in the HTML page', () => {
 		// Provide the form container
 		provideFormContainer(htmlBody);
-		// Instantiate the Form
-		new Form(options);
-		// Expect form element to be rendered by Form constructor
+		// Instantiate the Service
+		new Service(options);
+		// Expect form element to be rendered by Service constructor
 		expect(htmlBody.querySelector('form')).not.toBeNull();
 	});
 
-	// Test if Form object can render the form element
+	// Test if Service object can render the form element
 	it('can throw an error if the element to appendTo does not exist', () => {
 		// NOTE: the form container is not provided rendered since we do
 		// not run the provideFormContainer method
 
-		// Instantiate the Form
-		const newForm = () => {
-			new Form(options);
+		// Instantiate the Service
+		const newService = () => {
+			new Service(options);
 		};
 
 		/**
@@ -86,16 +86,16 @@ describe('Form object constuctor', () => {
      * ----------------------------------------------------------
      */
 
-		// Expect the Form constructor to throw an error since form container
+		// Expect the Service constructor to throw an error since form container
 		// is not in the HTML document
-		expect(newForm).toThrow(Error);
+		expect(newService).toThrow(Error);
 	});
 
-	// Test if Form class renders the first name text input
+	// Test if Service class renders the first name text input
 	it('renders a first name text input', () => {
 		// Provide the form container
 		provideFormContainer(htmlBody);
-		new Form(options);
+		new Service(options);
 		// Test if the input label text is rendered on the screen
 		expect(screen.getByLabelText('First Name')).not.toBeNull();
 	});
@@ -113,15 +113,15 @@ describe('RenderService Class', () => {
 	});
 
 	afterEach(() => {
-		// Remove the Form container
+		// Remove the Service container
 		removeFormContainer(htmlBody);
 	});
 
-	// Test if Form class renders the first name text input
+	// Test if Service class renders the first name text input
 	it('renders a first name text input', () => {
 		// Provide the form container
 		provideFormContainer(htmlBody);
-		new Form(options);
+		new Service(options);
 		// Test if the input label text is rendered on the screen
 		expect(screen.getByLabelText('First Name')).not.toBeNull();
 	});
